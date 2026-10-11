@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-export const VERSION = '1.0.4';
+export const VERSION = '1.0.5';
 export function commandFor(args, forced) {
   const mode = forced || args[0];
   if (!['mcp', 'serve'].includes(mode)) throw new Error('Choose mcp or serve. Run open-agent-search --help for commands.');

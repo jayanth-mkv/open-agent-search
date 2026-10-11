@@ -1,17 +1,56 @@
 {
   "name": "open-agent-search",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Self-hostable web search and content tools for AI agents, with stdio MCP and HTTP API support.",
   "type": "module",
-  "bin": { "open-agent-search": "npm/cli.js", "oas-mcp": "npm/mcp.js" },
-  "engines": { "node": ">=22" },
-  "files": ["npm/cli.js", "npm/mcp.js", "npm/runtime.js", "skills", "plugin.json", "mcp.json", ".mcp.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", "README.md", "LICENSE"],
-  "scripts": { "test": "node --test npm/*.test.js" },
+  "bin": {
+    "open-agent-search": "npm/cli.js",
+    "oas-mcp": "npm/mcp.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "npm/cli.js",
+    "npm/mcp.js",
+    "npm/runtime.js",
+    "skills",
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    ".codex-plugin/plugin.json",
+    ".claude-plugin/plugin.json",
+    "README.md",
+    "LICENSE",
+    "server.json",
+    "glama.json"
+  ],
+  "scripts": {
+    "test": "node --test npm/*.test.js"
+  },
   "author": "Xplormity Collective",
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/jayanth-mkv/open-agent-search.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayanth-mkv/open-agent-search.git"
+  },
   "homepage": "https://jayanth-mkv.github.io/open-agent-search/",
-  "bugs": { "url": "https://github.com/jayanth-mkv/open-agent-search/issues" },
-  "keywords": ["mcp", "ai", "agent", "search", "duckduckgo", "web-search", "agent-skills", "self-hosted", "cli"],
-  "publishConfig": { "access": "public" }
+  "bugs": {
+    "url": "https://github.com/jayanth-mkv/open-agent-search/issues"
+  },
+  "keywords": [
+    "mcp",
+    "ai",
+    "agent",
+    "search",
+    "duckduckgo",
+    "web-search",
+    "agent-skills",
+    "self-hosted",
+    "cli"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "mcpName": "io.github.jayanth-mkv/open-agent-search"
 }

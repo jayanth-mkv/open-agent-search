@@ -12,7 +12,7 @@ on:
             tag:
                 description: Existing version tag to publish
                 required: true
-                default: v1.0.4
+                default: v1.0.5
 
 jobs:
     npm-test:
@@ -167,3 +167,11 @@ jobs:
                   else
                       gh release create "$RELEASE_TAG" packages/* --repo "$GITHUB_REPOSITORY" --title "Open Agent Search $RELEASE_TAG" --generate-notes
                   fi
+
+    mcp-registry:
+        needs: [publish, npm-publish]
+        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+        permissions:
+            contents: read
+            id-token: write
+        uses: ./.github/workflows/publish-mcp.yml

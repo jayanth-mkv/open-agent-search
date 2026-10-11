@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.jayanth-mkv/open-agent-search -->
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/jayanth-mkv/open-agent-search/main/docs/assets/logo.svg" width="132" alt="Open Agent Search logo">
 </p>
@@ -45,10 +47,10 @@ one web search. Tell me if a client restart is needed. No API key is required.
 With Node.js 22+ and [uv](https://docs.astral.sh/uv/getting-started/installation/) installed:
 
 ```sh
-npx --yes open-agent-search@1.0.4 --version
-npx --yes open-agent-search@1.0.4 mcp
+npx --yes open-agent-search@1.0.5 --version
+npx --yes open-agent-search@1.0.5 mcp
 # Or start the HTTP API:
-npx --yes open-agent-search@1.0.4 serve
+npx --yes open-agent-search@1.0.5 serve
 ```
 
 The npm launcher uses the pinned Python core. It requires uv on PATH; uv manages Python 3.12 and dependencies.
@@ -56,7 +58,7 @@ The npm launcher uses the pinned Python core. It requires uv on PATH; uv manages
 With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run the MCP server in an isolated environment:
 
 ```sh
-uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp
+uvx --python 3.12 --from open-agent-search==1.0.5 oas-mcp
 ```
 
 `uv` can download Python 3.12 when it is missing. The first run downloads dependencies; the client starts and stops this stdio process after configuration.
@@ -64,7 +66,7 @@ uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp
 For a persistent PyPI installation and HTTP server:
 
 ```sh
-uv tool install --python 3.12 open-agent-search==1.0.4
+uv tool install --python 3.12 open-agent-search==1.0.5
 open-agent-search
 ```
 
@@ -101,7 +103,7 @@ Search sources, transports, and client integrations can evolve without changing 
 ### Add search to Claude Code
 
 ```bash
-claude mcp add oas -- uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp
+claude mcp add oas -- uvx --python 3.12 --from open-agent-search==1.0.5 oas-mcp
 ```
 
 Restart Claude Code, then ask it to search the web, news, images, videos, or books. The same `uvx` command works with Cursor, VS Code, Windsurf, OpenClaw, and other MCP clients.
@@ -114,7 +116,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
   "mcpServers": {
     "open-agent-search": {
       "command": "uvx",
-      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.4", "oas-mcp"]
+      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.5", "oas-mcp"]
     }
   }
 }
@@ -125,7 +127,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
 ### Run the HTTP API
 
 ```bash
-uv tool install --python 3.12 open-agent-search==1.0.4
+uv tool install --python 3.12 open-agent-search==1.0.5
 open-agent-search
 ```
 
@@ -157,7 +159,7 @@ The local MCP command and the HTTP service share the same search and content cap
 
 | Path | Command or endpoint | Best for |
 | --- | --- | --- |
-| Local MCP | `uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp` | Giving a desktop or coding agent search with no persistent server |
+| Local MCP | `uvx --python 3.12 --from open-agent-search==1.0.5 oas-mcp` | Giving a desktop or coding agent search with no persistent server |
 | HTTP service | `open-agent-search` | Applications, shared agent environments, REST clients, and remote MCP |
 
 ## Search surface
@@ -207,6 +209,15 @@ Deployment details: [Docker](https://jayanth-mkv.github.io/open-agent-search/dep
 - [MCP integrations](https://jayanth-mkv.github.io/open-agent-search/mcp/)
 - [API endpoints](https://jayanth-mkv.github.io/open-agent-search/api/endpoints/)
 - [Contributing](https://jayanth-mkv.github.io/open-agent-search/contributing/)
+
+## Registries and agent discovery
+
+- Packages: [npm](https://www.npmjs.com/package/open-agent-search) and [PyPI](https://pypi.org/project/open-agent-search/).
+- MCP Registry namespace: `io.github.jayanth-mkv/open-agent-search`. The release workflow publishes `server.json` after both packages are available. [Check the registry record](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.jayanth-mkv%2Fopen-agent-search).
+- Agent skills: install `open-agent-search` and `open-agent-search-setup` using the commands above. The [skills.sh directory](https://skills.sh/docs/faq) discovers skills through real installations; a repository alone does not guarantee a listing.
+- Glama: `glama.json` declares the GitHub maintainer. Directory submission and ownership verification require a separate Glama sign-in.
+
+The npm path requires Node.js 22+ and uv. The PyPI path uses uv to manage Python 3.12. This project provides a local server and deployment code; it does not provide a shared hosted search endpoint.
 
 ## Development
 

@@ -1,0 +1,44 @@
+name: Publish MCP registry
+on:
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install official publisher
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1
+          curl --fail --location --retry 3 "$BASE/mcp-publisher_linux_amd64.tar.gz" --output mcp-publisher_linux_amd64.tar.gz
+          curl --fail --location --retry 3 "$BASE/registry_1.8.1_checksums.txt" --output checksums.txt
+          awk '$2 == "mcp-publisher_linux_amd64.tar.gz"' checksums.txt > publisher.sha256
+          test -s publisher.sha256
+          sha256sum --check publisher.sha256
+          tar xzf mcp-publisher_linux_amd64.tar.gz mcp-publisher
+      - name: Validate metadata
+        run: ./mcp-publisher validate
+      - name: Authenticate with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+      - name: Publish server metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          NAME=$(node -p "require('./server.json').name")
+          VERSION=$(node -p "require('./server.json').version")
+          ENCODED_NAME=$(node -p "encodeURIComponent(require('./server.json').name)")
+          URL="https://registry.modelcontextprotocol.io/v0.1/servers/$ENCODED_NAME/versions/$VERSION"
+          STATUS=$(curl --silent --output existing.json --write-out '%{http_code}' "$URL")
+          if [ "$STATUS" = "200" ]; then
+            echo "MCP Registry already has $NAME $VERSION"
+          elif [ "$STATUS" = "404" ]; then
+            ./mcp-publisher publish
+          else
+            echo "Registry lookup failed: HTTP $STATUS"
+            exit 1
+          fi

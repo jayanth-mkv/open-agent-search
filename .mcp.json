@@ -6,7 +6,7 @@
         "--python",
         "3.12",
         "--from",
-        "open-agent-search==1.0.4",
+        "open-agent-search==1.0.5",
         "oas-mcp"
       ]
     }

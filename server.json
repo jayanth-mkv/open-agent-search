@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jayanth-mkv/open-agent-search",
+  "title": "Open Agent Search",
+  "description": "Search the web, news, images, videos and books, and extract page content for AI agents.",
+  "repository": {
+    "url": "https://github.com/jayanth-mkv/open-agent-search",
+    "source": "github"
+  },
+  "websiteUrl": "https://jayanth-mkv.github.io/open-agent-search/",
+  "version": "1.0.5",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "open-agent-search",
+      "version": "1.0.5",
+      "transport": { "type": "stdio" },
+      "packageArguments": [{ "type": "positional", "value": "mcp" }]
+    },
+    {
+      "registryType": "pypi",
+      "identifier": "open-agent-search",
+      "version": "1.0.5",
+      "runtimeHint": "uvx",
+      "runtimeArguments": [
+        { "type": "named", "name": "--python", "value": "3.12" },
+        { "type": "named", "name": "--from", "value": "open-agent-search==1.0.5" }
+      ],
+      "packageArguments": [{ "type": "positional", "value": "oas-mcp" }],
+      "transport": { "type": "stdio" }
+    }
+  ]
+}
