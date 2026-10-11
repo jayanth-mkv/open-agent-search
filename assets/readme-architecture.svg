@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Open Agent Search architecture</title>
+  <desc id="desc">MCP clients and applications connect through local MCP or HTTP service paths to one Open Agent Search layer, which queries DDGS search providers.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#74809A"/></marker>
+    <filter id="card-shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#111827" flood-opacity=".14"/></filter>
+    <!-- Canonical Lucide icons (ISC), reused as one 24 × 24 SVG symbol system. -->
+    <symbol id="lucide-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></symbol>
+    <symbol id="lucide-file-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/></symbol>
+    <symbol id="lucide-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></symbol>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#FFFFFF"/>
+  <rect x="20" y="20" width="1560" height="960" rx="20" fill="none" stroke="#DDE4F1" stroke-width="2"/>
+
+  <text x="800" y="110" text-anchor="middle" fill="#17203A" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="62" font-weight="800" letter-spacing="-2">Open Agent Search Architecture</text>
+  <text x="800" y="150" text-anchor="middle" fill="#66738D" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="20">One self-hostable search and content layer for agents and applications.</text>
+
+  <rect x="245" y="202" width="975" height="706" rx="16" fill="#F5F7FB" stroke="#C9D4E5" stroke-width="2"/>
+  <text x="275" y="244" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Your runtime</text>
+
+  <rect x="410" y="292" width="690" height="576" rx="16" fill="#F0F4FF"/>
+  <use xlink:href="#lucide-search" x="450" y="322" width="40" height="40" color="#4F46E5"/>
+  <text x="504" y="348" fill="#4F46E5" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="31" font-weight="800">Open Agent Search</text>
+  <text x="504" y="378" fill="#4F46E5" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="17">Local MCP and HTTP access to one shared retrieval layer</text>
+
+  <text x="70" y="456" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="700">MCP clients</text>
+  <rect x="70" y="476" width="145" height="106" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-files" x="116" y="504" width="54" height="54" color="#40588A"/>
+
+  <text x="70" y="662" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Agents and apps</text>
+  <rect x="70" y="682" width="145" height="106" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-file-code" x="116" y="710" width="54" height="54" color="#40588A"/>
+
+  <text x="450" y="468" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Local MCP</text>
+  <rect x="450" y="488" width="220" height="116" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-files" x="480" y="520" width="48" height="48" color="#40588A"/>
+  <text x="545" y="535" fill="#252C38" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="22" font-weight="800">oas-mcp</text>
+  <text x="545" y="562" fill="#62708A" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="15">stdio transport</text>
+
+  <text x="450" y="676" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="700">HTTP service</text>
+  <rect x="450" y="696" width="220" height="116" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-file-code" x="480" y="728" width="48" height="48" color="#40588A"/>
+  <text x="545" y="743" fill="#252C38" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="22" font-weight="800">FastAPI</text>
+  <text x="545" y="768" fill="#62708A" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="14">REST + streamable</text>
+  <text x="545" y="789" fill="#62708A" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="14">HTTP MCP</text>
+
+  <rect x="750" y="456" width="300" height="310" rx="14" fill="#202D4D" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-search" x="858" y="492" width="84" height="84" color="#FFFFFF"/>
+  <text x="900" y="622" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="25" font-weight="800">Search + content</text>
+  <text x="900" y="652" text-anchor="middle" fill="#C8D7FF" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="17">web · images · video · news</text>
+  <text x="900" y="678" text-anchor="middle" fill="#C8D7FF" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="17">books · page fetch · unified</text>
+
+  <text x="1290" y="560" fill="#30394B" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Search providers</text>
+  <rect x="1290" y="580" width="220" height="124" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <use xlink:href="#lucide-search" x="1322" y="618" width="50" height="50" color="#40588A"/>
+  <text x="1390" y="634" fill="#252C38" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="22" font-weight="800">DDGS</text>
+  <text x="1390" y="662" fill="#62708A" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="15">upstream search results</text>
+
+  <g fill="none" stroke="#74809A" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M215 529h235"/>
+    <path d="M215 735h235"/>
+    <path d="M670 546h40v14h40"/>
+    <path d="M670 754h40v-50h40"/>
+    <path d="M1050 611h170v31h70"/>
+  </g>
+</svg>

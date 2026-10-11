@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Open Agent Search</title>
+  <desc id="desc">Paperback-style cover for a self-hostable search layer for MCP-capable agents.</desc>
+  <rect width="1200" height="630" fill="#F4F0E7"/>
+  <rect x="28" y="28" width="1144" height="574" fill="none" stroke="#151515" stroke-width="2"/>
+  <rect x="28" y="28" width="112" height="574" fill="#151515"/>
+  <text x="84" y="90" fill="#F4F0E7" font-family="Courier New, monospace" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="4">OAS</text>
+  <line x1="84" y1="126" x2="84" y2="484" stroke="#F4F0E7" stroke-width="1" opacity=".55"/>
+  <text x="84" y="554" fill="#F4F0E7" font-family="Courier New, monospace" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="2">BETA</text>
+
+  <text x="188" y="82" fill="#69655E" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2">FIELD MANUAL / 01</text>
+  <text x="188" y="185" fill="#151515" font-family="Georgia, Times New Roman, serif" font-size="80" font-weight="700">Open Agent</text>
+  <text x="188" y="267" fill="#151515" font-family="Georgia, Times New Roman, serif" font-size="80" font-style="italic">Search</text>
+  <line x1="188" y1="305" x2="1092" y2="305" stroke="#151515" stroke-width="2"/>
+
+  <text x="188" y="354" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="25">One search layer for any MCP-capable agent.</text>
+  <text x="188" y="391" fill="#69655E" font-family="Arial, Helvetica, sans-serif" font-size="18">Self-hostable · six search surfaces · local or HTTP</text>
+
+  <rect x="188" y="436" width="904" height="72" fill="#151515"/>
+  <text x="218" y="480" fill="#F4F0E7" font-family="Courier New, monospace" font-size="17">claude mcp add oas -- uvx --from open-agent-search oas-mcp</text>
+
+  <text x="188" y="552" fill="#69655E" font-family="Courier New, monospace" font-size="13" letter-spacing="1">TEXT / IMAGES / VIDEO / NEWS / BOOKS / PAGE CONTENT</text>
+  <text x="1092" y="552" fill="#151515" font-family="Courier New, monospace" font-size="13" text-anchor="end">MIT · PYTHON 3.12+</text>
+</svg>
