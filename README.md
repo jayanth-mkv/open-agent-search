@@ -7,6 +7,7 @@
 <p align="center"><strong>One self-hostable search and content layer for AI agents and applications.</strong></p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/open-agent-search"><img alt="npm" src="https://img.shields.io/npm/v/open-agent-search"></a>
   <a href="https://pypi.org/project/open-agent-search/"><img alt="PyPI" src="https://img.shields.io/pypi/v/open-agent-search"></a>
   <a href="https://www.python.org/"><img alt="Python 3.12+" src="https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-2EA44F"></a>
