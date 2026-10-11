@@ -213,11 +213,16 @@ Deployment details: [Docker](https://jayanth-mkv.github.io/open-agent-search/dep
 ## Registries and agent discovery
 
 - Packages: [npm](https://www.npmjs.com/package/open-agent-search) and [PyPI](https://pypi.org/project/open-agent-search/).
+- Local MCP bundle: [Smithery](https://smithery.ai/servers/jayanth-mkv/open-agent-search). It runs on your machine and requires Node.js 22+ and uv.
 - MCP Registry namespace: `io.github.jayanth-mkv/open-agent-search`. The release workflow publishes `server.json` after both packages are available. [Check the registry record](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.jayanth-mkv%2Fopen-agent-search).
-- Agent skills: install `open-agent-search` and `open-agent-search-setup` using the commands above. The [skills.sh directory](https://skills.sh/docs/faq) discovers skills through real installations; a repository alone does not guarantee a listing.
+- Agent skills: [Open Agent Search](https://clawhub.ai/jayanth-mkv/skills/open-agent-search) and [setup](https://clawhub.ai/jayanth-mkv/skills/open-agent-search-setup) are published on ClawHub. You can also install them from GitHub using the commands above. The [skills.sh directory](https://skills.sh/docs/faq) discovers skills through real installations; a repository alone does not guarantee a listing.
 - Glama: `glama.json` declares the GitHub maintainer. Directory submission and ownership verification require a separate Glama sign-in.
 
 The npm path requires Node.js 22+ and uv. The PyPI path uses uv to manage Python 3.12. This project provides a local server and deployment code; it does not provide a shared hosted search endpoint.
+
+The local MCPB bundle is built with `python scripts/build_mcpb.py`. It contains the pinned npm launcher and requires Node.js 22+ and uv on PATH. Its first launch downloads the Python core and dependencies. No credentials are bundled.
+
+ClawHub distributes its skill copies under MIT-0, as required by that registry. This repository and its packages remain MIT licensed. GitHub Actions previews skill changes on pushes to main and publishes them on releases when `CLAWHUB_TOKEN` and the repository variable `PUBLISH_CLAWHUB=true` are configured. The workflow checks that the authenticated ClawHub owner matches the source repository owner.
 
 ## Development
 

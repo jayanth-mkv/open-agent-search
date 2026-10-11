@@ -1,0 +1,22 @@
+{
+  "manifest_version": "0.3",
+  "name": "open-agent-search",
+  "display_name": "Open Agent Search",
+  "version": "1.0.5",
+  "description": "Search the web, news, images, videos and books, and extract page content for AI agents.",
+  "long_description": "Requires Node.js 22+ and uv installed on PATH. The bundled launcher uses uv to download managed Python 3.12 and the pinned Open Agent Search Python package on first launch. No provider API key is required. Queries reach upstream search providers through DDGS; fetched URLs reach the requested websites. This bundle starts local stdio MCP and does not expose an HTTP service.",
+  "author": { "name": "Xplormity Collective" },
+  "repository": { "type": "git", "url": "https://github.com/jayanth-mkv/open-agent-search.git" },
+  "homepage": "https://jayanth-mkv.github.io/open-agent-search/",
+  "documentation": "https://jayanth-mkv.github.io/open-agent-search/mcp/",
+  "support": "https://github.com/jayanth-mkv/open-agent-search/issues",
+  "server": {
+    "type": "node",
+    "entry_point": "npm/mcp.js",
+    "mcp_config": { "command": "node", "args": ["${__dirname}/npm/mcp.js"] }
+  },
+  "compatibility": { "platforms": ["darwin", "win32", "linux"], "runtimes": { "node": ">=22" } },
+  "privacy_policies": ["https://duckduckgo.com/privacy"],
+  "keywords": ["web-search", "mcp", "page-extraction", "self-hosted", "cli"],
+  "license": "MIT"
+}

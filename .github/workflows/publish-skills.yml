@@ -1,0 +1,60 @@
+name: Publish agent skills
+on:
+  push:
+    branches: [main]
+    paths: ['skills/**', '.github/workflows/publish-skills.yml']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview without publishing
+        type: boolean
+        default: true
+  workflow_call:
+    secrets:
+      CLAWHUB_TOKEN:
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: publish-skills
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        skill: ["open-agent-search", "open-agent-search-setup"]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Publish changed skills under the source owner
+        env:
+          CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+          DRY_RUN: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+          SKILL: ${{ matrix.skill }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          OWNER="${GITHUB_REPOSITORY_OWNER,,}"
+          CLI=(npm exec --yes --package=clawhub@0.23.3 -- clawhub)
+          EXTRA=()
+          if [ "$DRY_RUN" = "true" ]; then
+            EXTRA+=(--dry-run)
+          else
+            test -n "$CLAWHUB_TOKEN"
+            "${CLI[@]}" login --token "$CLAWHUB_TOKEN" --no-input
+            ACTOR=$("${CLI[@]}" whoami)
+            test "$ACTOR" = "$OWNER"
+          fi
+          "${CLI[@]}" skill publish "skills/$SKILL" \
+            --owner "$OWNER" --slug "$SKILL" \
+            --source-repo "https://github.com/$GITHUB_REPOSITORY" \
+            --source-commit "$GITHUB_SHA" --source-ref "$GITHUB_REF_NAME" \
+            --source-path "skills/$SKILL" \
+            --changelog "Publish changed agent instructions from the source repository." \
+            "${EXTRA[@]}" --json

@@ -37,7 +37,18 @@ jobs:
           if [ "$STATUS" = "200" ]; then
             echo "MCP Registry already has $NAME $VERSION"
           elif [ "$STATUS" = "404" ]; then
-            ./mcp-publisher publish
+            for ATTEMPT in 1 2 3 4 5; do
+              if ./mcp-publisher publish > publish.log 2>&1; then
+                cat publish.log
+                exit 0
+              fi
+              cat publish.log
+              # Retry only package propagation errors; fail other validation errors.
+              if ! grep -q "newly published release" publish.log || [ "$ATTEMPT" = "5" ]; then
+                exit 1
+              fi
+              sleep 15
+            done
           else
             echo "Registry lookup failed: HTTP $STATUS"
             exit 1

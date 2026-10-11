@@ -10,6 +10,7 @@ version = json.loads((root / "package.json").read_text())["version"]
 dist = root / "dist"
 dist.mkdir(exist_ok=True)
 subprocess.run(["npm", "pack", "--pack-destination", "dist"], cwd=root, check=True)
+subprocess.run(["python", "scripts/build_mcpb.py"], cwd=root, check=True)
 files = [
     "README.md",
     "LICENSE",
