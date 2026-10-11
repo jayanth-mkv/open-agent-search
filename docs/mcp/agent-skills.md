@@ -45,7 +45,7 @@ Merge this server with your client's existing servers:
   "mcpServers": {
     "open-agent-search": {
       "command": "uvx",
-      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.3", "oas-mcp"]
+      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.4", "oas-mcp"]
     }
   }
 }

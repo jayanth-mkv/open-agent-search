@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.svg" width="132" alt="Open Agent Search logo">
+  <img src="https://raw.githubusercontent.com/jayanth-mkv/open-agent-search/main/docs/assets/logo.svg" width="132" alt="Open Agent Search logo">
 </p>
 
 <h1 align="center">Open Agent Search</h1>
@@ -41,10 +41,21 @@ one web search. Tell me if a client restart is needed. No API key is required.
 
 ## Installation commands
 
+With Node.js 22+ and [uv](https://docs.astral.sh/uv/getting-started/installation/) installed:
+
+```sh
+npx --yes open-agent-search@1.0.4 --version
+npx --yes open-agent-search@1.0.4 mcp
+# Or start the HTTP API:
+npx --yes open-agent-search@1.0.4 serve
+```
+
+The npm launcher uses the pinned Python core. It requires uv on PATH; uv manages Python 3.12 and dependencies.
+
 With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run the MCP server in an isolated environment:
 
 ```sh
-uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp
+uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp
 ```
 
 `uv` can download Python 3.12 when it is missing. The first run downloads dependencies; the client starts and stops this stdio process after configuration.
@@ -52,7 +63,7 @@ uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp
 For a persistent PyPI installation and HTTP server:
 
 ```sh
-uv tool install --python 3.12 open-agent-search==1.0.3
+uv tool install --python 3.12 open-agent-search==1.0.4
 open-agent-search
 ```
 
@@ -64,7 +75,7 @@ Install both skills for Codex in the current project:
 npx --yes skills add Jayanth-MKV/open-agent-search --skill open-agent-search-setup open-agent-search --agent codex --copy --yes
 ```
 
-Replace `codex` with `claude-code`, `cursor`, `opencode`, or your [supported agent](https://github.com/vercel-labs/skills#supported-agents). Add `--global` only for installation across projects. [Plugin and manual setup](docs/mcp/agent-skills.md). An npm launcher is planned; the PyPI commands above are available now.
+Replace `codex` with `claude-code`, `cursor`, `opencode`, or your [supported agent](https://github.com/vercel-labs/skills#supported-agents). Add `--global` only for installation across projects. [Plugin and manual setup](docs/mcp/agent-skills.md). Use either npm or PyPI above; both start the same Python implementation.
 
 In Claude Code 2.1.275+, install both skills and the MCP configuration in one step:
 
@@ -73,7 +84,7 @@ In Claude Code 2.1.275+, install both skills and the MCP configuration in one st
 ```
 
 <p align="center">
-  <img src="docs/assets/readme-architecture.svg" width="1000" alt="Open Agent Search architecture showing MCP clients and applications connecting through local MCP or HTTP service paths to one shared search and content layer and DDGS providers">
+  <img src="https://raw.githubusercontent.com/jayanth-mkv/open-agent-search/main/docs/assets/readme-architecture.svg" width="1000" alt="Open Agent Search architecture showing MCP clients and applications connecting through local MCP or HTTP service paths to one shared search and content layer and DDGS providers">
 </p>
 
 ## What is Open Agent Search?
@@ -89,7 +100,7 @@ Search sources, transports, and client integrations can evolve without changing 
 ### Add search to Claude Code
 
 ```bash
-claude mcp add oas -- uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp
+claude mcp add oas -- uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp
 ```
 
 Restart Claude Code, then ask it to search the web, news, images, videos, or books. The same `uvx` command works with Cursor, VS Code, Windsurf, OpenClaw, and other MCP clients.
@@ -102,7 +113,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
   "mcpServers": {
     "open-agent-search": {
       "command": "uvx",
-      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.3", "oas-mcp"]
+      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.4", "oas-mcp"]
     }
   }
 }
@@ -113,7 +124,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
 ### Run the HTTP API
 
 ```bash
-uv tool install --python 3.12 open-agent-search==1.0.3
+uv tool install --python 3.12 open-agent-search==1.0.4
 open-agent-search
 ```
 
@@ -134,7 +145,7 @@ The server exposes REST endpoints at `http://localhost:8000`, interactive API do
 - **Production-minded defaults.** Typed FastAPI routes, rate limiting, health checks, tests, and deployment guides are included.
 
 <p align="center">
-  <img src="docs/assets/readme-why.svg" width="92%" alt="Before and after Open Agent Search: six separate adapters become one search connection">
+  <img src="https://raw.githubusercontent.com/jayanth-mkv/open-agent-search/main/docs/assets/readme-why.svg" width="92%" alt="Before and after Open Agent Search: six separate adapters become one search connection">
 </p>
 
 ## Architecture
@@ -145,7 +156,7 @@ The local MCP command and the HTTP service share the same search and content cap
 
 | Path | Command or endpoint | Best for |
 | --- | --- | --- |
-| Local MCP | `uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp` | Giving a desktop or coding agent search with no persistent server |
+| Local MCP | `uvx --python 3.12 --from open-agent-search==1.0.4 oas-mcp` | Giving a desktop or coding agent search with no persistent server |
 | HTTP service | `open-agent-search` | Applications, shared agent environments, REST clients, and remote MCP |
 
 ## Search surface

@@ -1,6 +1,6 @@
 {
   "name": "open-agent-search",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Search public sources and fetch page content with local MCP tools.",
   "author": {
     "name": "Xplormity Collective"

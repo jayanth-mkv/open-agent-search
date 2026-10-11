@@ -1542,7 +1542,7 @@ wheels = [
 
 [[package]]
 name = "open-agent-search"
-version = "1.0.3"
+version = "1.0.4"
 source = { editable = "." }
 dependencies = [
     { name = "beautifulsoup4" },

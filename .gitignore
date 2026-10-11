@@ -50,3 +50,7 @@ locust_report_*.html
 
 # MkDocs
 site/
+# npm and tooling caches
+node_modules/
+*.tgz
+.ruff_cache/
