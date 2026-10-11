@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "open-agent-search": {
+      "command": "uvx",
+      "args": [
+        "--python",
+        "3.12",
+        "--from",
+        "open-agent-search==1.0.3",
+        "oas-mcp"
+      ]
+    }
+  }
+}

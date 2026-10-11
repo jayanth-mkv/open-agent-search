@@ -1,0 +1,14 @@
+{
+  "name": "open-agent-search",
+  "description": "Local search MCP tools with setup and research skills.",
+  "owner": {
+    "name": "Xplormity Collective"
+  },
+  "plugins": [
+    {
+      "name": "open-agent-search",
+      "source": "./",
+      "description": "Search public sources and fetch page content with local MCP tools."
+    }
+  ]
+}

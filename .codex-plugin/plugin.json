@@ -1,0 +1,15 @@
+{
+  "name": "open-agent-search",
+  "version": "1.0.3",
+  "description": "Search public sources and fetch page content with local MCP tools.",
+  "author": {
+    "name": "Xplormity Collective"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/open-agent-search-setup/SKILL.md"
+    }
+  }
+}

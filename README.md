@@ -15,12 +15,62 @@
 
 <p align="center">
   <a href="#what-is-open-agent-search">What is OAS?</a> ·
-  <a href="#try-it-in-30-seconds">Quick start</a> ·
+  <a href="#set-up-with-your-agent">Agent setup</a> ·
   <a href="#capabilities">Capabilities</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#search-surface">API surface</a> ·
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
+
+## Set up with your agent
+
+Copy this prompt into your coding agent:
+
+```text
+Set up Open Agent Search for this project using
+https://github.com/Jayanth-MKV/open-agent-search. Read its README and
+skills/open-agent-search-setup/SKILL.md. Reuse uv if installed, otherwise
+install it using the official uv instructions for my OS. Configure the
+local stdio MCP server with the pinned package and managed Python version
+from the repository's MCP manifest. Merge the server into this agent's
+configuration without replacing existing servers. Install the
+open-agent-search-setup and open-agent-search skills for this agent in
+project scope. Verify the MCP connection and available tools, then try
+one web search. Tell me if a client restart is needed. No API key is required.
+```
+
+## Installation commands
+
+With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run the MCP server in an isolated environment:
+
+```sh
+uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp
+```
+
+`uv` can download Python 3.12 when it is missing. The first run downloads dependencies; the client starts and stops this stdio process after configuration.
+
+For a persistent PyPI installation and HTTP server:
+
+```sh
+uv tool install --python 3.12 open-agent-search==1.0.3
+open-agent-search
+```
+
+The HTTP server listens on port 8000 on all interfaces. Use stdio for an agent that only needs local tools.
+
+Install both skills for Codex in the current project:
+
+```sh
+npx --yes skills add Jayanth-MKV/open-agent-search --skill open-agent-search-setup open-agent-search --agent codex --copy --yes
+```
+
+Replace `codex` with `claude-code`, `cursor`, `opencode`, or your [supported agent](https://github.com/vercel-labs/skills#supported-agents). Add `--global` only for installation across projects. [Plugin and manual setup](docs/mcp/agent-skills.md). An npm launcher is planned; the PyPI commands above are available now.
+
+In Claude Code 2.1.275+, install both skills and the MCP configuration in one step:
+
+```text
+/plugin install open-agent-search --marketplace Jayanth-MKV/open-agent-search --scope project
+```
 
 <p align="center">
   <img src="docs/assets/readme-architecture.svg" width="1000" alt="Open Agent Search architecture showing MCP clients and applications connecting through local MCP or HTTP service paths to one shared search and content layer and DDGS providers">
@@ -34,12 +84,12 @@ OAS replaces separate adapters for every search vertical with one consistent too
 
 Search sources, transports, and client integrations can evolve without changing the repository's core goal: give agents and applications a dependable retrieval boundary they can control.
 
-## Try it in 30 seconds
+## Connect MCP or HTTP
 
 ### Add search to Claude Code
 
 ```bash
-claude mcp add oas -- uvx --from open-agent-search oas-mcp
+claude mcp add oas -- uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp
 ```
 
 Restart Claude Code, then ask it to search the web, news, images, videos, or books. The same `uvx` command works with Cursor, VS Code, Windsurf, OpenClaw, and other MCP clients.
@@ -52,7 +102,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
   "mcpServers": {
     "open-agent-search": {
       "command": "uvx",
-      "args": ["--from", "open-agent-search", "oas-mcp"]
+      "args": ["--python", "3.12", "--from", "open-agent-search==1.0.3", "oas-mcp"]
     }
   }
 }
@@ -63,7 +113,7 @@ Restart Claude Code, then ask it to search the web, news, images, videos, or boo
 ### Run the HTTP API
 
 ```bash
-uv pip install open-agent-search
+uv tool install --python 3.12 open-agent-search==1.0.3
 open-agent-search
 ```
 
@@ -95,7 +145,7 @@ The local MCP command and the HTTP service share the same search and content cap
 
 | Path | Command or endpoint | Best for |
 | --- | --- | --- |
-| Local MCP | `uvx --from open-agent-search oas-mcp` | Giving a desktop or coding agent search with no persistent server |
+| Local MCP | `uvx --python 3.12 --from open-agent-search==1.0.3 oas-mcp` | Giving a desktop or coding agent search with no persistent server |
 | HTTP service | `open-agent-search` | Applications, shared agent environments, REST clients, and remote MCP |
 
 ## Search surface
@@ -159,3 +209,5 @@ Open Agent Search is currently beta software. Bug reports and focused pull reque
 ## License
 
 [MIT](LICENSE)
+
+Maintained by **Xplormity Collective**.

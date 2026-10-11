@@ -1,12 +1,12 @@
 site_name: Open Agent Search (OAS)
 site_url: https://jayanth-mkv.github.io/open-agent-search
 site_description: The independent search layer for AI agents. Privacy-first, unfiltered access to knowledge.
-site_author: Jayanth-MKV
+site_author: Xplormity Collective
 repo_url: https://github.com/Jayanth-MKV/open-agent-search
 repo_name: Jayanth-MKV/open-agent-search
 edit_uri: edit/main/docs/
 
-copyright: Copyright &copy; 2024–2026 Jayanth-MKV
+copyright: Copyright &copy; 2024–2026 Xplormity Collective
 
 theme:
   name: material
@@ -104,6 +104,7 @@ nav:
       - Quick Start: getting-started/quickstart.md
   - MCP Integration:
       - Overview: mcp/index.md
+      - Agent Skills and Plugins: mcp/agent-skills.md
       - Claude Desktop: mcp/claude-desktop.md
       - Claude Code: mcp/claude-code.md
       - Cursor: mcp/cursor.md

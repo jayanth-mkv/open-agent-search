@@ -1,0 +1,17 @@
+{
+  "name": "open-agent-search",
+  "plugins": [
+    {
+      "name": "open-agent-search",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
